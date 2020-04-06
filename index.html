@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Grid</title>
+        <script src="./src/index.js"></script>
+        <link rel="stylesheet" type="text/css" href="./src/style.scss">
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <input type="text" placeholder="Search city" class="search"
+                onkeyup="fn(event.target.value)" id="search"/>
+                <div class="cbox">
+                    <input type="checkbox" id="hd" name="opt"  onchange="op.filterCities(event.target)">
+                    <label for="hd"> HD Enabled</label>
+                    <input type="checkbox" id="oneWay" name="opt" onchange="op.filterCities(event.target)">
+                    <label for="oneWay"> One Way Enabled</label>
+                </div>
+            </div>
+           <h1 class="center-align">
+               Popular
+           </h1>
+           <div class="wrapper" id="popular">
+           </div>
+           <h1 class="center-align">
+            Others
+        </h1>
+        <div class="wrapper" id="others">
+            
+        </div>
+          </div>
+    </body>
+</html>
