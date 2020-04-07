@@ -1,5 +1,7 @@
 window.addEventListener('DOMContentLoaded', (event) => {
+
 });
+
 function Cars() {
         this.cities = [];
         this.filterdData = [];
@@ -23,20 +25,23 @@ function Cars() {
             parent.appendChild(row);
         }
         this.fetchData = () => {
+        //this.showLoader();   
         fetch('https://api.zoomcar.com/v4/cities?platform=web').then(function (response) {
             // The API call was successful!
             return response.json();
         }).then((data) => {
-            if (data.cities) {
-                this.cities = data.cities
-                for (let i = 0; i < this.cities.length; i++) {
-                    this.renderCard(this.cities[i])
+            setTimeout(() => {
+                this.hideLoader();
+                if (data.cities) {
+                    this.cities = data.cities
+                    for (let i = 0; i < this.cities.length; i++) {
+                        this.renderCard(this.cities[i])
+                    }
                 }
-            }
-            else {
-                console.warn('No Data Found', err);
-            }
-    
+                else {
+                    console.warn('No Data Found', err);
+                }
+            },1000)
         }).catch(function (err) {
             // There was an error
             console.warn('Something went wrong.', err);
@@ -70,6 +75,15 @@ Cars.prototype.filterCities = function(event) {
        this.renderCard(this.filterdData[i]);
     }
     console.log(this.filterdData);
+}
+Cars.prototype.showLoader = function() {
+    let loader = document.getElementsByClassName('loader')[0];
+    loader.removeAttribute('class','hide');
+    document.getElementsByClassName('cont')[0].setAttribute('class','hide');
+}
+Cars.prototype.hideLoader = function() {
+   document.getElementsByClassName('cont')[0].removeAttribute('class','hide');
+   document.getElementsByClassName('loader')[0].setAttribute('class','hide');
 }
 var op = new Cars();
 function debounce(fn, duration) {

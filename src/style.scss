@@ -59,3 +59,39 @@ img {
     justify-content: center;
     align-items: center;
 }
+.loader {
+	margin: auto;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: #c3b6b6;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	box-shadow: 0 0 0px #FFF;
+}
+.shadow {
+	margin: auto;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	position: relative;
+	background: #757575;
+	transition: all .3s ease;
+	animation: move 1.2s infinite alternate ease-in-out;
+	transform: translate3d(20px, -12px, 2px);
+}
+@keyframes move {
+	100% {
+		transform: translate3d(36px, -26px, 4px);
+	}
+}
+.hide {
+    display: none;
+}
